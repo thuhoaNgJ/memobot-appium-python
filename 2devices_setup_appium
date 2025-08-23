@@ -1,0 +1,33 @@
+from appium import webdriver
+from appium.options.android import UiAutomator2Options
+import time
+
+def setup_driver(device_name, system_port, server_url):
+    options = UiAutomator2Options()
+    options.set_capability("platformName", "Android")
+    options.set_capability("automationName", "UiAutomator2")
+    options.set_capability("deviceName", device_name)
+    options.set_capability("appPackage", "vn.vais.memobot")
+    options.set_capability("appActivity", "com.ryanheise.audioservice.AudioServiceActivity")
+    # Quan trọng: systemPort khác nhau cho mỗi device
+    options.set_capability("systemPort", system_port)
+
+    driver = webdriver.Remote(server_url, options=options)
+    time.sleep(5)
+    print(f"✅ Mở app thành công trên thiết bị {device_name}")
+    return driver
+
+
+if __name__ == "__main__":
+    # Device 1 (cổng 4723)
+    driver1 = setup_driver("47c92427", 8200, "http://127.0.0.1:4723/wd/hub")
+
+    # Device 2 (cổng 4725)
+    driver2 = setup_driver("AHB00009462", 8201, "http://127.0.0.1:4725/wd/hub")
+
+    # Test nhỏ: in ra activity hiện tại
+    print("📱 Device 1 đang ở:", driver1.current_activity)
+    print("📱 Device 2 đang ở:", driver2.current_activity)
+
+    # Giữ app mở 10s rồi quit
+    time.sleep(10)

@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./Autotest_"
+    ],
+    "python-envs.pythonProjects": []
+}
