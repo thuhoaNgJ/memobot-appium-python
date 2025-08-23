@@ -1,6 +1,7 @@
 import Autotest_appium
 from appium import webdriver
 import login
+import chat_AI
 import search_audio
 from appium.webdriver.common.appiumby import AppiumBy
 from selenium.webdriver.common.by import By
