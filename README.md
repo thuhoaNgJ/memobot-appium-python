@@ -71,6 +71,6 @@ This project automates testing for the MemoBot Android app using Appium and Pyth
    - There are two ways to create a new test file:
      - Duplicate `test_file.py` and modify as needed.
      - Create a new Python file and:
-       - Import necessary modules, e.g. `import login.py`, `import setupDriver`.
-       - Call the login function from `check_login.py`.
+       - Import necessary modules, e.g. `import login.py`, `import Autotest_appium`.
+       - Call the login function from `login.py`.
        - Continue writing your test functions
