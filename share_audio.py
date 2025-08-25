@@ -28,38 +28,25 @@ def go_to_share_audio(driver):
     time.sleep(10)
 
 def set_up_share_audio(driver):
+    go_to_share_audio(driver)
     setup_share_button = "[912,118][1056,262]"
-    setup_share_button.click_element_by_bounds(driver, setup_share_button)
-    time.sleep(5)
-    print("Đã click vào nút chia sẻ")
+    chat_AI.click_element_by_bounds(driver, setup_share_button)
+    time.sleep(3)
 
-    # Tìm nút radio trong "Chia sẻ cả file ghi âm"
-    radio_btn = driver.find_element(
+    shared_file_radio_btn = driver.find_element(
         AppiumBy.XPATH, "//android.view.View[@content-desc='Chia sẻ cả file ghi âm']/android.widget.RadioButton"
     )
-
     # Click vào nút
-    radio_btn.click()
-
-    print("✅ Đã click vào nút 'Chia sẻ cả file ghi âm'")   
+    shared_file_radio_btn.click()
+    time.sleep(3)
+    shared_button = driver.find_element(
+        AppiumBy.XPATH, "(//android.view.View[@content-desc='Chia sẻ'])[2]"
+    )
+    shared_button.click()
     time.sleep(5)
-    
+    print("Đã mở dropdown option chia sẻ file ghi âm")
 
-
-    bounds2 = "[176,1217][864,1268]" #1 đoạn text ở tóm tắt
-    chat_AI.click_element_by_bounds(driver, bounds2)
-    driver.execute_script("mobile: type", {"text": ". Đây là đoạn text được thêm."})
-    time.sleep(5)
-
-    bounds3 = "[[915,387][988,441]" #nút lưu
-    chat_AI.click_element_by_bounds(driver, bounds3)
-
-def check_not_allow_see_audio(driver):
-    login.login(driver, wait, email_pro, password_pro)
-
-
-
-    return
+    # Tìm các option trong "Cho phép người khác xem đoạn text tóm tắt"
 
 if __name__ == "__main__":
     driver = Autotest_appium.setup_driver()
@@ -68,6 +55,8 @@ if __name__ == "__main__":
     password_pro = "Abcd@123456"
     email_user = "memo1@mailinator.com"
     password_user = "Abcd@12345"
+    # login.login(driver, wait, email_pro, password_pro)
+    set_up_share_audio(driver)
     
 
 
