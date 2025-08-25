@@ -1,12 +1,8 @@
 import Autotest_appium
-from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
 from selenium.webdriver.common.by import By
-from appium.options.android import UiAutomator2Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from appium.webdriver.extensions.android.nativekey import AndroidKey
-
 import time
 
 def login(driver, wait, email, password):

@@ -1,14 +1,9 @@
 import Autotest_appium
-from appium import webdriver
 import login
 import chat_AI
 import search_audio
 from appium.webdriver.common.appiumby import AppiumBy
-from selenium.webdriver.common.by import By
-from appium.options.android import UiAutomator2Options
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from appium.webdriver.extensions.android.nativekey import AndroidKey
 import time
 
 def go_to_share_audio(driver):
@@ -55,7 +50,7 @@ if __name__ == "__main__":
     password_pro = "Abcd@123456"
     email_user = "memo1@mailinator.com"
     password_user = "Abcd@12345"
-    # login.login(driver, wait, email_pro, password_pro)
+    login.login(driver, wait, email_pro, password_pro)
     set_up_share_audio(driver)
     
 

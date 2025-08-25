@@ -1,13 +1,10 @@
 import Autotest_appium
 import login
 import search_audio
+
 from appium.webdriver.common.appiumby import AppiumBy
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
 import time
-
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.actions.action_builder import ActionBuilder
 from selenium.webdriver.common.actions.pointer_input import PointerInput

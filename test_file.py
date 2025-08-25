@@ -1,12 +1,6 @@
 import Autotest_appium
 import login
-from appium.webdriver.common.appiumby import AppiumBy
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from appium.webdriver.extensions.android.nativekey import AndroidKey
-
-import time
 
 def function():
     pass
