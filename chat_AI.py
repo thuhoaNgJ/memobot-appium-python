@@ -1,7 +1,7 @@
 import Autotest_appium
 import login
 import search_audio
-
+from selenium.webdriver.support import expected_conditions as EC
 from appium.webdriver.common.appiumby import AppiumBy
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.actions.action_builder import ActionBuilder
@@ -40,11 +40,15 @@ def chat_AI(driver, bounds):
     "//android.view.View[contains(@content-desc, 'Vincom')]"
     )
     chosen_audio.click()
-    time.sleep(5)
-    chatAI_screen_button = driver.find_element(
-        AppiumBy.XPATH,
+    # time.sleep(5)
+    chatAI_screen_button = wait.until(
+        EC.presence_of_element_located((AppiumBy.XPATH,
         "//android.view.View[@content-desc='Chat với AI']"
-    )
+    )))
+    # chatAI_screen_button = driver.find_element(
+    #     AppiumBy.XPATH,
+    #     "//android.view.View[@content-desc='Chat với AI']"
+    # )
     chatAI_screen_button.click()
     time.sleep(10)
 
