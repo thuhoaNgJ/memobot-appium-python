@@ -8,7 +8,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 import time
 
 def input_text_in_edit_text(driver):
+    # steps sau khi đã vào trang xem chi tiết audio được chọn (chứa text search "Vincom")
     time.sleep(5)
+
     chosen_audio = driver.find_element(
     AppiumBy.XPATH,
     "//android.view.View[contains(@content-desc, 'Vincom')]"
