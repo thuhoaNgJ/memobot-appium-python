@@ -51,6 +51,7 @@ def upload_file(driver, file_path):
     # time.sleep(2)
 
     # 4. Chọn file "REC_230627_105611.m4a"
+
     target_file = driver.find_element(
         AppiumBy.XPATH,
         "//android.widget.TextView[@text='REC_230627_105611.m4a']"
@@ -58,10 +59,7 @@ def upload_file(driver, file_path):
     target_file.click()
     time.sleep(5)
 
-
-
-    # Lấy toàn bộ XML của màn hình hiện tại
-    xml_source = driver.page_source
+    xml_source = driver.page_source #lấy text source của trang hiện tại
 
     # Kiểm tra đoạn text có xuất hiện không
     if "REC_230627_105611" in xml_source:

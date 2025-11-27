@@ -2,6 +2,7 @@ import Autotest_appium
 import login
 from appium.webdriver.common.appiumby import AppiumBy
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import time
 
 def transcribe_youtube(driver, youtube_link):
@@ -13,26 +14,23 @@ def transcribe_youtube(driver, youtube_link):
     link_youtube_button.click()
     time.sleep(3)
 
-    # Tìm phần tử theo class name (giả sử chỉ có 1 EditText)
-    edit_text = driver.find_element(AppiumBy.CLASS_NAME, "android.widget.EditText")
+    # Tìm phần tử theo class name
+    edit_text = wait.until(EC.visibility_of_element_located
+                           ((AppiumBy.CLASS_NAME, "android.widget.EditText")))
+    # edit_text = driver.find_element(AppiumBy.CLASS_NAME, "android.widget.EditText")
+    edit_text.click()       
+    edit_text.clear()
 
-    # Click vào ô nhập
-    edit_text.click()
-    time.sleep(1)
-
-    # Gửi nội dung vào ô nhập
-    edit_text.send_keys(youtube_link)
+    edit_text.send_keys(youtube_link) # Nhập link youtube
     time.sleep(3)
-    # Nhấn phím Enter trên bàn phím Android
-    # Tìm và click vào button "Bắt đầu"
+
     start_button = driver.find_element(AppiumBy.ACCESSIBILITY_ID, "Bắt đầu")
     start_button.click()
     
-    time.sleep(10)  
-    # Lấy toàn bộ XML của màn hình hiện tại
-    xml_source = driver.page_source
+    time.sleep(10)  # Đợi để upload file youtube
+    xml_source = driver.page_source 
 
-    # Kiểm tra đoạn text có xuất hiện không
+    # Kiểm tra đoạn text có xuất hiện trong source screen không
     if "https://youtu.be/" in xml_source:
         print("✅ Audio link youtube đã được upload!")
     else:

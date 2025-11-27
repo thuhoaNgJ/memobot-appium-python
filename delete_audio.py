@@ -3,16 +3,20 @@ import login
 import search_audio
 import edit_name_audio
 from appium.webdriver.common.appiumby import AppiumBy
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 
 import time
 
 def delete_audio(driver):
-    time.sleep(5)
+    # time.sleep(5)
 
     # Tìm phần tử ghi chú
-    delete_button = driver.find_element(AppiumBy.ACCESSIBILITY_ID,"Xoá")
+    delete_button = wait.until(
+        EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "Xoá"))
+    )
+    # delete_button = driver.find_element(AppiumBy.ACCESSIBILITY_ID,"Xoá")
     delete_button.click()
     time.sleep(3)
   

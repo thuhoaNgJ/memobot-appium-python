@@ -3,6 +3,7 @@ import login
 import youtube_audio
 from appium.webdriver.common.appiumby import AppiumBy
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import re
 
 import time
@@ -14,11 +15,12 @@ def go_to_package_screen(driver):
     )
     upgrade_tab.click()
     time.sleep(5)
-
-    goi_hien_tai_element = driver.find_element(
-        AppiumBy.XPATH,
-        '//android.view.View[@content-desc="Gói hiện tại"]'
+    
+    goi_hien_tai_element = wait.until(
+        EC.presence_of_element_located((AppiumBy.XPATH,
+                                       '//android.view.View[@content-desc="Gói hiện tại"]'))
     )
+    # goi_hien_tai_element = driver.find_element(AppiumBy.XPATH, '//android.view.View[@content-desc="Gói hiện tại"]')
     goi_hien_tai_element.click()
 
 def get_present_package_infor(driver):
